@@ -15,7 +15,7 @@ const config = {
 			strict: false
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/antropomorf' : ''
+			base: process.env.BASE_PATH || ''
 		}
 	}
 };
