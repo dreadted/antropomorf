@@ -12,10 +12,12 @@
 
 	let { title, image, bullets, link, tech = '', index = 0 }: Props = $props();
 
-	const techArray = tech
-		.split(',')
-		.map((t) => t.trim())
-		.filter(Boolean);
+	const techArray = $derived(
+		tech
+			.split(',')
+			.map((t) => t.trim())
+			.filter(Boolean)
+	);
 
 	let hasBeenHovered = $state(false);
 

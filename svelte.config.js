@@ -6,15 +6,12 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: null,
-			strict: false
-		}),
+		adapter: adapter(),
+
 		paths: {
 			base: process.env.BASE_PATH || ''
 		},
+
 		prerender: {
 			entries: ['*'],
 			handleHttpError: 'warn'
