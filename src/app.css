@@ -1,0 +1,47 @@
+/* 
+  Author: Christofer Laurin
+  Version: 0.1.0
+  Website: antropomorf.se
+*/
+:root {
+	--dark: #131019;
+	--medium: #00b2ff60;
+	--primary: #ff00b2;
+	--secondary: #e4ff46;
+	--black: #000;
+	--white: #fff;
+
+	--font-size: clamp(1rem, 2dvw, 4rem);
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Source Code Pro';
+	font-style: normal;
+	font-weight: 500;
+	src: url('/fonts/source-code-pro-v23-latin-500.woff2') format('woff2');
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100dvh;
+	overflow: hidden;
+	background: linear-gradient(to bottom, var(--dark), var(--black));
+}
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: var(--font-size);
+	height: var(--font-size);
+	padding: calc(var(--font-size) / 2);
+	stroke-width: 0;
+	stroke: currentColor;
+	overflow: visible;
+	fill: currentColor;
+	pointer-events: none;
+	text-rendering: optimizeSpeed;
+	buffered-rendering: static;
+}
