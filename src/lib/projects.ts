@@ -30,14 +30,14 @@ export const projects = [
 	{
 		title: 'Softmed',
 		tech: 'WP,PHP,JS,CSS',
-		image: 'images/softmed.jpg',
+		image: '/images/softmed.jpg',
 		bullets: ['logo', 'design elements'],
 		link: 'https://softmed.antropomorf.se'
 	},
 	{
 		title: 'Startup Arena',
 		tech: 'WP,JS,CSS',
-		image: 'images/startup-arena.jpg',
+		image: '/images/startup-arena.jpg',
 		bullets: ['logo', 'hosting'],
 		link: 'https://startuparena.se'
 	}

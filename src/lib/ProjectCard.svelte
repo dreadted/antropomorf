@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from './Icon.svelte';
+	import { base } from '$app/paths';
 
 	interface Props {
 		title: string;
@@ -11,6 +11,8 @@
 	}
 
 	let { title, image, bullets, link, tech = '', index = 0 }: Props = $props();
+
+	const imgSrc = $derived(`${base}${image}`);
 
 	const techArray = $derived(
 		tech
@@ -28,7 +30,7 @@
 
 <article class="card" style="animation-delay: {index / 2}s;" onmouseenter={handleMouseEnter}>
 	<a href={link} target="_blank">
-		<img src={image} alt={title} />
+		<img src={imgSrc} alt={title} />
 	</a>
 	<div class="card-content" class:expanded={hasBeenHovered}>
 		{#if techArray.length > 0}
