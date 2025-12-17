@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Header from '$lib/Header.svelte';
 	import ProjectCard from '$lib/ProjectCard.svelte';
-	import Contact from '$lib/Contact.svelte';
+	import Footer from '$lib/Footer.svelte';
 	import { projects } from '$lib/projects';
 </script>
 
@@ -14,7 +14,7 @@
 		{/each}
 	</section>
 
-	<Contact />
+	<Footer />
 </main>
 
 <style>
