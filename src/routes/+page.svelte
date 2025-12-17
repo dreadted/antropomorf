@@ -1,8 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Header from '$lib/Header.svelte';
 	import ProjectCard from '$lib/ProjectCard.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import { projects } from '$lib/projects';
+	import { activeCardIndex } from '$lib/stores';
+
+	onMount(() => {
+		// On mobile, activate the very first card by default on page load.
+		const isMobile = window.matchMedia('(max-width: 600px)').matches;
+		if (isMobile) {
+			activeCardIndex.set(1); // Set the first card (index 1) as active
+		}
+	});
 </script>
 
 <main>

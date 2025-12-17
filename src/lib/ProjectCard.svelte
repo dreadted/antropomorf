@@ -49,7 +49,7 @@
 
 		const options = {
 			root: null, // observing intersections relative to the viewport
-			rootMargin: '-50% 0px -50% 0px', // trigger when the element is in the vertical center
+			rootMargin: '-25% 0px -75% 0px', // trigger when the element is 25% from the top of the viewport
 			threshold: 0
 		};
 
