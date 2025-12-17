@@ -142,7 +142,7 @@
 		stroke-width: 0.4;
 		stroke-dasharray: 800;
 		stroke-dashoffset: 800;
-		animation: logoAnimation 1s ease-in-out 1 forwards;
+		animation: logoAnimation 2s ease-in-out 1 forwards;
 		transition: all 0.5s;
 	}
 

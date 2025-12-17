@@ -10,7 +10,14 @@
 		index?: number;
 	}
 
-	let { title, image, link, tech = '', index = 0 }: Props = $props();
+	let {
+		title,
+		image,
+		link,
+		tech = '',
+		index = 0,
+		articleEl = $bindable()
+	}: Props & { articleEl: HTMLElement } = $props();
 
 	const techArray = $derived(
 		tech
@@ -40,38 +47,10 @@
 			if ($activeCardIndex === index) activeCardIndex.set(null);
 		}, 100);
 	}
-
-	let articleEl: HTMLElement;
-	let observer: IntersectionObserver;
-
-	onMount(() => {
-		if (!articleEl) return;
-
-		const options = {
-			root: null, // observing intersections relative to the viewport
-			rootMargin: '-25% 0px -75% 0px', // trigger when the element is 25% from the top of the viewport
-			threshold: 0
-		};
-
-		observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					handleActivate();
-				}
-			});
-		}, options);
-
-		observer.observe(articleEl);
-	});
-
-	onDestroy(() => {
-		if (observer) {
-			observer.disconnect();
-		}
-	});
 </script>
 
 <article
+	data-index={index}
 	class="card"
 	style="animation-delay: {index / 2}s;"
 	class:active={isActive}
@@ -121,9 +100,8 @@
 	h2 {
 		color: var(--white);
 		margin: 0;
-		font-size: 1.5em;
+		font-size: 1.1em;
 		transition: all 0.3s ease-out;
-		text-shadow: 1px 1px 0 var(--primary-1);
 	}
 
 	a {
@@ -135,35 +113,27 @@
 
 	a:hover {
 		transform: scale(1.2);
-		box-shadow:
-			0 0 10px var(--primary-4),
-			0 0 20px var(--primary-3),
-			0 0 30px var(--primary-2);
 	}
 
-	/* Apply glow effect on smaller screens when card is centered */
 	@media (max-width: 600px) {
 		.card.active > a {
-			box-shadow:
-				0 0 10px var(--primary-4),
-				0 0 20px var(--primary-3),
-				0 0 30px var(--primary-2);
+			transform: scale(1.04);
 		}
 	}
 
 	.card-overlay {
+		background-color: color-mix(in srgb, var(--dark) 60%, transparent);
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 1rem;
-		background: linear-gradient(to top, var(--primary-3) 20%, transparent 60%);
-		opacity: 0;
-		transition: opacity 0.3s ease-out;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+		opacity: 0;
+		padding: 1rem;
+		transition: all 0.5s ease-in-out;
 	}
 
 	.card-overlay.active {
@@ -190,7 +160,6 @@
 		border-radius: 0.25rem;
 		font-size: 0.75em;
 		font-weight: 600;
-		box-shadow: 1px 1px 0 var(--primary-1);
 	}
 
 	.badge[data-tech='php'] {

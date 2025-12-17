@@ -36,7 +36,7 @@
 		color: var(--medium);
 		font-family: 'Source Code Pro';
 		font-weight: 500;
-		font-size: calc(var(--font-size) / 1.4);
+		font-size: calc(var(--font-size) / 1.6);
 	}
 
 	@media (max-width: 600px) {

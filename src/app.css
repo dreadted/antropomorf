@@ -41,12 +41,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background: radial-gradient(
-		ellipse 200% 200% at 100% 100%,
-		var(--black) 0%,
-		var(--dark) 40%,
-		var(--black) 60%
-	);
+	background: radial-gradient(ellipse 200% 200% at 100% 100%, var(--dark) 30%, var(--black) 60%);
 	background-attachment: fixed;
 }
 
@@ -69,7 +64,6 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.5rem;
 
 	color: var(--medium);
 	font-family: 'Source Code Pro';
