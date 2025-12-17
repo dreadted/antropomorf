@@ -21,8 +21,24 @@
 
 	const isActive = $derived($activeCardIndex === index);
 
+	// Resolve the relative image path against the document's base URL.
+	// This ensures it works correctly whether deployed at root or a subpath.
+	const resolvedImageSrc = $derived(
+		typeof window !== 'undefined' ? new URL(image, document.baseURI).href : image
+	);
+
+	let deactivateTimeout: ReturnType<typeof setTimeout>;
+
 	function handleActivate() {
+		clearTimeout(deactivateTimeout);
 		activeCardIndex.set(index);
+	}
+
+	function handleDeactivate() {
+		deactivateTimeout = setTimeout(() => {
+			// Only deactivate if this card is still the active one.
+			if ($activeCardIndex === index) activeCardIndex.set(null);
+		}, 100);
 	}
 
 	let articleEl: HTMLElement;
@@ -60,10 +76,12 @@
 	style="animation-delay: {index / 2}s;"
 	class:active={isActive}
 	onmouseenter={handleActivate}
+	onmouseleave={handleDeactivate}
+	onfocusout={handleDeactivate}
 	bind:this={articleEl}
 >
 	<a href={link} target="_blank" rel="noopener noreferrer">
-		<img src={image} alt={title} />
+		<img src={resolvedImageSrc} alt={title} />
 		<div class="card-overlay" class:active={isActive}>
 			<h2>{title}</h2>
 			{#if techArray.length > 0}
