@@ -1,4 +1,37 @@
-<div class="header" id="hero">
+<script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+
+	let heroEl: HTMLElement;
+
+	const handleTouchMove = (e: TouchEvent) => {
+		const touch = e.touches[0];
+		if (!touch) return;
+
+		const elementAtTouch = document.elementFromPoint(touch.clientX, touch.clientY);
+
+		if (elementAtTouch && elementAtTouch.classList.contains('text')) {
+			elementAtTouch.classList.add('restart');
+		}
+	};
+
+	const handleTouchEnd = () => {
+		document.querySelectorAll('#logo path.text.restart').forEach((path) => {
+			path.classList.remove('restart');
+		});
+	};
+
+	onMount(() => {
+		heroEl?.addEventListener('touchmove', handleTouchMove);
+		heroEl?.addEventListener('touchend', handleTouchEnd);
+	});
+
+	onDestroy(() => {
+		heroEl?.removeEventListener('touchmove', handleTouchMove);
+		heroEl?.removeEventListener('touchend', handleTouchEnd);
+	});
+</script>
+
+<div class="header" id="hero" bind:this={heroEl}>
 	<svg
 		id="logo-svg"
 		data-name="logo-svg"
@@ -94,7 +127,8 @@
 		align-items: center;
 		position: relative;
 		overflow: hidden;
-		margin-block: 4rem;
+		margin-block-start: 1rem;
+		margin-block-end: clamp(0.5rem, 2vh + 2rem, 6rem);
 	}
 
 	#logo-svg {
