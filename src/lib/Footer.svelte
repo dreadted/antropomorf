@@ -33,7 +33,7 @@
 		align-items: center;
 
 		margin: 2rem 0;
-		color: var(--primary-3);
+		color: var(--medium);
 		font-family: 'Source Code Pro';
 		font-weight: 500;
 		font-size: calc(var(--font-size) / 1.4);

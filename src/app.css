@@ -6,6 +6,10 @@
 	--primary-3: #650046;
 	--primary-4: #8a005b;
 	--secondary: #e4ff46;
+
+	--dark: #001924;
+	--medium: #029bdd;
+
 	--black: #000;
 	--white: #fff;
 
@@ -39,9 +43,9 @@ body {
 	justify-content: space-between;
 	background: radial-gradient(
 		ellipse 200% 200% at 100% 100%,
-		var(--primary-0) 0%,
-		var(--primary-1) 40%,
-		var(--primary-0) 60%
+		var(--black) 0%,
+		var(--dark) 40%,
+		var(--black) 60%
 	);
 	background-attachment: fixed;
 }
@@ -67,7 +71,7 @@ a {
 	align-items: center;
 	gap: 0.5rem;
 
-	color: var(--primary);
+	color: var(--medium);
 	font-family: 'Source Code Pro';
 	text-decoration: none;
 	transition: all 0.5s;
