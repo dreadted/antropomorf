@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "npm run generate-env && vite dev",
-		"build": "npm run generate-env && vite build",
+		"build": "vite build",
 		"preview": "vite preview",
 		"generate-env": "node -e \"const fs = require('fs'); const { version } = require('./package.json'); const author = require('child_process').execSync('git config user.name').toString().trim(); const content = 'VITE_AUTHOR=' + author + '\\n' + 'VITE_PACKAGE_VERSION=' + version + '\\n'; fs.writeFileSync('.env', content, 'utf8');\"",
 		"prepare": "svelte-kit sync || echo ''",
