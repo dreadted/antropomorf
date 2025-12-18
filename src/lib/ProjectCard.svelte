@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
 	import { activeCardIndex } from '$lib/stores';
 
 	interface Props {
@@ -59,14 +58,16 @@
 	onfocusout={handleDeactivate}
 	bind:this={articleEl}
 >
-	<a href={link} target="_blank" rel="noopener noreferrer">
+	<a href={link} target="_blank" rel="noopener noreferrer" class="card-link">
 		<img src={resolvedImageSrc} alt={title} />
-		<div class="card-overlay" class:active={isActive}>
+		<div class="card-content" class:active={isActive}>
 			<h2>{title}</h2>
 			{#if techArray.length > 0}
 				<div class="badges">
 					{#each techArray as badge}
-						<span class="badge" data-tech={badge.toLowerCase()}>{badge}</span>
+						<span class="badge" data-tech={badge.toLowerCase()}>
+							{badge}
+						</span>
 					{/each}
 				</div>
 			{/if}
@@ -101,46 +102,34 @@
 		color: var(--white);
 		margin: 0;
 		font-size: 1.1em;
-		transition: all 0.3s ease-out;
 	}
 
-	a {
-		display: inline-flex;
-		position: relative;
+	.card-link {
+		display: block;
 		border-radius: 4px;
 		overflow: hidden;
+		opacity: 0.7;
 	}
 
-	a:hover {
+	.card-link:hover {
 		transform: scale(1.2);
-	}
-
-	@media (max-width: 600px) {
-		.card.active > a {
-			transform: scale(1.04);
-		}
-	}
-
-	.card-overlay {
-		background-color: color-mix(in srgb, var(--dark) 60%, transparent);
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		opacity: 0;
-		padding: 1rem;
-		transition: all 0.5s ease-in-out;
-	}
-
-	.card-overlay.active {
 		opacity: 1;
 	}
 
-	img {
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		opacity: 0;
+		padding-block-start: 0.5rem;
+		transition: opacity 0.4s ease-out;
+	}
+
+	.card-content.active {
+		opacity: 1;
+	}
+
+	.card-link img {
 		width: 100%;
 		border-radius: 4px;
 		transition: all 0.5s;
@@ -177,5 +166,16 @@
 
 	.badge[data-tech='wp'] {
 		background-color: var(--wp);
+	}
+
+	@media (max-width: 600px) {
+		.card-link {
+			transform: scale(0.9);
+		}
+
+		.card.active > .card-link {
+			transform: scale(1.04);
+			opacity: 1;
+		}
 	}
 </style>
