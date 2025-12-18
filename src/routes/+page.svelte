@@ -12,10 +12,16 @@
 	// A map to keep track of all currently intersecting (visible) cards and their visibility ratio
 	const intersectingEntries = new Map<Element, number>();
 
+	let isMobile = false;
+	let mql: MediaQueryList;
+
 	onMount(() => {
+		mql = window.matchMedia('(max-width: 599px)');
+		isMobile = mql.matches;
+
 		const handleScroll = () => {
 			// Special case: When scrolled to the absolute top, activate the first card.
-			if (window.scrollY === 0) {
+			if (isMobile && window.scrollY === 0) {
 				activeCardIndex.set(1);
 			}
 
@@ -23,7 +29,7 @@
 			const isAtBottom =
 				Math.ceil(window.innerHeight + window.scrollY) >=
 				document.documentElement.scrollHeight - 100;
-			if (isAtBottom) {
+			if (isMobile && isAtBottom) {
 				activeCardIndex.set(projects.length);
 			}
 		};
@@ -38,6 +44,10 @@
 		};
 
 		observer = new IntersectionObserver((entries) => {
+			if (!isMobile) {
+				return;
+			}
+
 			for (const entry of entries) {
 				if (entry.isIntersecting) {
 					intersectingEntries.set(entry.target, entry.intersectionRatio);
@@ -54,7 +64,6 @@
 				if (ratio > maxRatio) {
 					maxRatio = ratio;
 					mostVisibleCardIndex = parseInt((element as HTMLElement).dataset.index || '0');
-					console.log('most visible:', mostVisibleCardIndex);
 				}
 			}
 
@@ -62,10 +71,17 @@
 		}, options);
 
 		cardElements.forEach((el) => observer.observe(el));
+
+		const handleResize = (e: MediaQueryListEvent) => {
+			isMobile = e.matches;
+		};
+
+		mql.addEventListener('change', handleResize);
 	});
 
 	onDestroy(() => {
-		if (observer) {
+		if (mql) {
+			mql.removeEventListener('change', handleResize);
 			window.removeEventListener('scroll', handleScroll);
 			observer.disconnect();
 		}

@@ -132,7 +132,7 @@
 	}
 
 	#logo-svg {
-		width: 80dvw;
+		width: clamp(20rem, 80vw, 40rem);
 		transition: all 0.5s;
 	}
 

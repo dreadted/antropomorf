@@ -38,11 +38,23 @@
 }
 
 body {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	background-color: var(--black); /* Fallback background */
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	height: 100vh; /* Fills viewport, but can be tricky on mobile. Consider 100dvh for modern browsers. */
 	background: radial-gradient(ellipse 200% 200% at 100% 100%, var(--dark) 30%, var(--black) 60%);
-	background-attachment: fixed;
+	z-index: -1;
+	/* The user mentioned object-fit, which is for media. For a background, background-size is the equivalent. */
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .icon {

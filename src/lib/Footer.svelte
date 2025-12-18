@@ -32,7 +32,7 @@
 		justify-content: space-between;
 		align-items: center;
 
-		margin: 2rem 0;
+		margin: 2rem 0 0;
 		color: var(--medium);
 		font-family: 'Source Code Pro';
 		font-weight: 500;
