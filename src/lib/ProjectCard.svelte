@@ -132,7 +132,7 @@
 	.card-link img {
 		width: 100%;
 		height: auto;
-		aspect-ratio: 800 / 600;
+		aspect-ratio: 4 / 3;
 		object-fit: cover;
 		border-radius: 4px;
 		transition: all 0.5s;

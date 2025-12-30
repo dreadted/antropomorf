@@ -213,14 +213,14 @@
 	}
 
 	.letter:hover,
-	.letter.restart {
+	.letter:global(.restart) {
 		cursor: pointer;
 	}
 
 	.letter:hover .stroke-layer,
-	.letter.restart .stroke-layer,
+	.letter:global(.restart) .stroke-layer,
 	.letter:hover .fill-layer,
-	.letter.restart .fill-layer {
+	.letter:global(.restart) .fill-layer {
 		animation: none;
 		opacity: 0;
 	}

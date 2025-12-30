@@ -15,24 +15,28 @@
 	let isMobile = false;
 	let mql: MediaQueryList;
 
+	const handleScroll = () => {
+		// Special case: When scrolled to the absolute top, activate the first card.
+		if (isMobile && window.scrollY === 0) {
+			activeCardIndex.set(1);
+		}
+
+		// Special case: When scrolled to the absolute bottom, activate the last card.
+		const isAtBottom =
+			Math.ceil(window.innerHeight + window.scrollY) >=
+			document.documentElement.scrollHeight - 100;
+		if (isMobile && isAtBottom) {
+			activeCardIndex.set(projects.length);
+		}
+	};
+
+	const handleResize = (e: MediaQueryListEvent) => {
+		isMobile = e.matches;
+	};
+
 	onMount(() => {
 		mql = window.matchMedia('(max-width: 599px)');
 		isMobile = mql.matches;
-
-		const handleScroll = () => {
-			// Special case: When scrolled to the absolute top, activate the first card.
-			if (isMobile && window.scrollY === 0) {
-				activeCardIndex.set(1);
-			}
-
-			// Special case: When scrolled to the absolute bottom, activate the last card.
-			const isAtBottom =
-				Math.ceil(window.innerHeight + window.scrollY) >=
-				document.documentElement.scrollHeight - 100;
-			if (isMobile && isAtBottom) {
-				activeCardIndex.set(projects.length);
-			}
-		};
 
 		window.addEventListener('scroll', handleScroll);
 
@@ -72,10 +76,6 @@
 
 		cardElements.forEach((el) => observer.observe(el));
 
-		const handleResize = (e: MediaQueryListEvent) => {
-			isMobile = e.matches;
-		};
-
 		mql.addEventListener('change', handleResize);
 	});
 
@@ -102,14 +102,13 @@
 
 <style>
 	main {
-		max-width: 1024px;
 		margin: 0 auto;
 		padding: 1rem;
 	}
 
 	.projects {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 4rem;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 2em;
 	}
 </style>
