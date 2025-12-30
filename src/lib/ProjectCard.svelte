@@ -59,7 +59,7 @@
 	bind:this={articleEl}
 >
 	<a href={link} target="_blank" rel="noopener noreferrer" class="card-link">
-		<img src={resolvedImageSrc} alt={title} />
+		<img src={resolvedImageSrc} alt={title} width="800" height="600" />
 		<div class="card-content" class:active={isActive}>
 			<h2>{title}</h2>
 			{#if techArray.length > 0}
@@ -132,6 +132,9 @@
 
 	.card-link img {
 		width: 100%;
+		height: auto;
+		aspect-ratio: 800 / 600;
+		object-fit: cover;
 		border-radius: 4px;
 		transition: all 0.5s;
 	}
