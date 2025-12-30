@@ -15,18 +15,26 @@
 	let isMobile = false;
 	let mql: MediaQueryList;
 
-	const handleScroll = () => {
-		// Special case: When scrolled to the absolute top, activate the first card.
-		if (isMobile && window.scrollY === 0) {
-			activeCardIndex.set(1);
-		}
+	let ticking = false;
 
-		// Special case: When scrolled to the absolute bottom, activate the last card.
-		const isAtBottom =
-			Math.ceil(window.innerHeight + window.scrollY) >=
-			document.documentElement.scrollHeight - 100;
-		if (isMobile && isAtBottom) {
-			activeCardIndex.set(projects.length);
+	const handleScroll = () => {
+		if (!ticking) {
+			window.requestAnimationFrame(() => {
+				// Special case: When scrolled to the absolute top, activate the first card.
+				if (isMobile && window.scrollY === 0) {
+					activeCardIndex.set(1);
+				}
+
+				// Special case: When scrolled to the absolute bottom, activate the last card.
+				const isAtBottom =
+					Math.ceil(window.innerHeight + window.scrollY) >=
+					document.documentElement.scrollHeight - 100;
+				if (isMobile && isAtBottom) {
+					activeCardIndex.set(projects.length);
+				}
+				ticking = false;
+			});
+			ticking = true;
 		}
 	};
 

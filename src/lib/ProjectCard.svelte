@@ -51,7 +51,9 @@
 <article
 	data-index={index}
 	class="card"
-	style="animation-delay: {index / 2}s;"
+	style="animation-delay: {(index - 1) * 0.1}s; {index === 1
+		? 'animation: none; opacity: 1;'
+		: ''}"
 	class:active={isActive}
 	onmouseenter={handleActivate}
 	onmouseleave={handleDeactivate}
@@ -59,7 +61,14 @@
 	bind:this={articleEl}
 >
 	<a href={link} target="_blank" rel="noopener noreferrer" class="card-link">
-		<img src={resolvedImageSrc} alt={title} width="800" height="600" />
+		<img
+			src={resolvedImageSrc}
+			alt={title}
+			width="800"
+			height="600"
+			fetchpriority={index === 1 ? 'high' : 'auto'}
+			loading={index === 1 ? 'eager' : 'lazy'}
+		/>
 		<div class="card-content" class:active={isActive}>
 			<h2>{title}</h2>
 			{#if techArray.length > 0}
