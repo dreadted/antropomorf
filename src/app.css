@@ -49,10 +49,14 @@ body::before {
 	content: '';
 	position: fixed;
 	inset: 0;
-	height: 100vh; /* Fills viewport, but can be tricky on mobile. Consider 100dvh for modern browsers. */
-	background: radial-gradient(ellipse 200% 200% at 100% 100%, var(--dark) 30%, var(--black) 60%);
+	height: 100vh;
+	background: radial-gradient(
+		ellipse 200% 200% at 100% 100%,
+		var(--black),
+		var(--dark) 30%,
+		var(--black) 60%
+	);
 	z-index: -1;
-	/* The user mentioned object-fit, which is for media. For a background, background-size is the equivalent. */
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -87,6 +91,18 @@ a:hover {
 	color: var(--secondary);
 	opacity: 1;
 	transform: scale(1.05);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
 }
 
 @keyframes textAnimation {

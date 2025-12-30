@@ -108,11 +108,10 @@
 		display: block;
 		border-radius: 4px;
 		overflow: hidden;
-		opacity: 0.9;
 	}
 
 	.card-link:hover {
-		transform: scale(1.2);
+		transform: scale(1.1);
 		opacity: 1;
 	}
 
