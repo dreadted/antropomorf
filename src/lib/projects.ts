@@ -14,7 +14,7 @@ export const projects = [
 		link: 'https://aitechbuilding.eu'
 	},
 	{
-		title: 'Bringhöjden AB',
+		title: 'Bringhöjden',
 		tech: 'WP,JS,CSS',
 		image: './images/bringhojden.jpg',
 		bullets: ['logo', 'typography', 'design elements', 'hosting'],

@@ -108,7 +108,7 @@
 		display: block;
 		border-radius: 4px;
 		overflow: hidden;
-		opacity: 0.7;
+		opacity: 0.9;
 	}
 
 	.card-link:hover {
@@ -118,8 +118,9 @@
 
 	.card-content {
 		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		opacity: 0;
 		padding-block-start: 0.5rem;
 		transition: opacity 0.4s ease-out;
@@ -139,7 +140,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
-		margin-top: 0.5rem;
 	}
 
 	.badge {

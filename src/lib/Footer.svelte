@@ -23,7 +23,7 @@
 
 <footer id="footer" bind:this={footerEl}>
 	<span><MailtoLink /></span>
-	<span>&copy; {year} {import.meta.env.VITE_AUTHOR} v{import.meta.env.VITE_PACKAGE_VERSION}</span>
+	<span>v{import.meta.env.VITE_PACKAGE_VERSION} &copy; {year} {import.meta.env.VITE_AUTHOR}</span>
 </footer>
 
 <style>
