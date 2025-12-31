@@ -51,9 +51,7 @@
 <article
 	data-index={index}
 	class="card"
-	style="animation-delay: {(index - 1) * 0.1}s; {index === 1
-		? 'animation: none; opacity: 1;'
-		: ''}"
+	style="animation-delay: {(index - 1) * 0.1}s; {index === 1 ? 'animation: none; opacity: 1;' : ''}"
 	class:active={isActive}
 	onmouseenter={handleActivate}
 	onmouseleave={handleDeactivate}
@@ -156,9 +154,9 @@
 	.badge {
 		color: var(--white);
 		display: inline-block;
-		padding: 0.25rem 0.5rem;
+		padding: 0.2rem 0.3rem;
 		border-radius: 0.25rem;
-		font-size: 0.75em;
+		font-size: 0.6em;
 		font-weight: 600;
 	}
 
