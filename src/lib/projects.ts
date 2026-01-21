@@ -28,11 +28,10 @@ export const projects = [
 		link: 'https://ptsussis.se'
 	},
 	{
-		title: 'Softmed',
-		tech: 'WP,PHP,JS,CSS',
-		image: './images/softmed.webp',
-		bullets: ['logo', 'design elements'],
-		link: 'https://softmed.antropomorf.se'
+		tech: 'WP,CSS',
+		image: './images/hazhar.webp',
+		bullets: ['typography', 'design elements'],
+		link: 'https://www.hazharbokforingsbyra.se'
 	},
 	{
 		title: 'Startup Arena',
