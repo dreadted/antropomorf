@@ -4,16 +4,14 @@
 	"version": "0.1.5",
 	"type": "module",
 	"scripts": {
-		"dev": "npm run generate-env && vite dev",
+		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"generate-env": "node -e \"const fs = require('fs'); const { version } = require('./package.json'); const author = require('child_process').execSync('git config user.name').toString().trim(); const content = 'VITE_AUTHOR=' + author + '\\n' + 'VITE_PACKAGE_VERSION=' + version + '\\n'; fs.writeFileSync('.env', content, 'utf8');\"",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"version": "npm run generate-env && git add .env"
+		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",

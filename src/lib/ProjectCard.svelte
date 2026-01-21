@@ -127,8 +127,8 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
+		padding: 0.5rem;
 		opacity: 0;
-		padding-block-start: 0.5rem;
 		transition: opacity 0.4s ease-out;
 	}
 

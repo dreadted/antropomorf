@@ -10,4 +10,13 @@ declare global {
 	}
 }
 
+interface ImportMetaEnv {
+	readonly VITE_PACKAGE_VERSION: string;
+	readonly VITE_AUTHOR: string;
+}
+
+interface ImportMeta {
+	readonly env: ImportMetaEnv;
+}
+
 export {};
