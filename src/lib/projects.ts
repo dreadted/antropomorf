@@ -28,6 +28,7 @@ export const projects = [
 		link: 'https://ptsussis.se'
 	},
 	{
+		title: 'Hazhar Sher',
 		tech: 'WP,CSS',
 		image: './images/hazhar.webp',
 		bullets: ['typography', 'design elements'],
